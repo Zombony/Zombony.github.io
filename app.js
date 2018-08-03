@@ -52,5 +52,3 @@ function chkWin(arr, name){
     }
   }
 }
-
-function 
