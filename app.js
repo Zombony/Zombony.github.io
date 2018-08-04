@@ -62,4 +62,3 @@ function chkWin(arr, name){
     doReload();
   }
 }
-
