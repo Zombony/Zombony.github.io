@@ -4,6 +4,10 @@ var arrY = [[],[],[]];
 
 var move = "O";
 
+function doReload(){
+  location.reload();
+}
+
 
 for(var i = 0; i < arr.length; i++){
   for(var j = 0; j < arr.length; j++){
@@ -34,21 +38,28 @@ function doMove(obj){
   document.getElementById(obj.id).disabled = "disabled";
 }
 
+
+
+
 function chkWin(arr, name){
+  var win;
   for(var i = 0; i < arr.length; i++){
     if(arr[0][0] != undefined && arr[1][1] != undefined && arr[2][2] != undefined || arr[0][2] != undefined && arr[1][1] != undefined && arr[2][0] != undefined){
-      alert("diag");
-      return;
+      win = true;
     }
 
     for(var j = 0; j < 3; j++){
       if(arr[0][j] != undefined && arr[1][j] != undefined && arr[2][j] != undefined){
-        alert("u win");
-        return;
+        win = true;
       }
     }
     if(arr[i][0] != undefined && arr[i][1] != undefined && arr[i][2] != undefined){
-      alert(name + " win");
+      win = true;
     }
   }
+  if(win == true){
+    alert(name + "win");
+    doReload();
+  }
 }
+
