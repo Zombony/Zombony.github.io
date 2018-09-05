@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Рассписание</title>
+	<style>
+	table{
+		border-collapse : collapse;
+	}
+
+	td{
+		border : 1px solid grey;
+		padding : 3px 10px;
+	}
+
+	#cap{
+		background-color : black;
+		color : white;
+		font-weight: bold;
+		text-align : center;
+	}
+</style>
+<script>
+	var date = new Date();
+	var numDay = date.getDay();
+
+	switch(numDay){
+		case 1 :
+		numDay = "mon";
+		break;
+		case 2 : 
+		numDay = "tues";
+		break;
+		case 3 : 
+		numDay = "wedn";
+		break;
+		case 4 : 
+		numDay = "thur";
+		break;
+		case 5 : 
+		numDay = "fri";
+		break;
+	}
+
+	var unSubject = {
+		mon : {
+			firs : {
+				start : 0830,
+				end : 0920,
+			},
+			sec : {
+				start : 0930,
+				end : 1020,
+			},
+			third : {
+				start : 1040,
+				end : 1130,
+			},
+			four : {
+				start : 1140,
+				end : 1230,
+			}
+		},
+
+		tues : {
+			firs : {
+				start : 0930,
+				end : 1020,
+			},
+			sec : {
+				start : 1040,
+				end : 1130,
+			},
+			third : {
+				start : 1140,
+				end : 1230,
+			},
+			four : {
+				start : 1300,
+				end : 1350,	
+			},
+			fiv : {
+				start : 1400,
+				end : 1450,
+			}
+		},
+
+		wedn : {
+			firs : {
+				start : 1040,
+				end : 1130,
+			},
+			sec : {
+				start : 1140,
+				end : 1230,
+			},
+			third : {
+				start : 1300,
+				end : 1350,
+			},
+		},
+
+		thur : {
+			firs : {
+				start : 0930,
+				end : 1020,
+			},
+			sec : {
+				start : 1040,
+				end : 1130,
+			},
+			third : {
+				start : 1140,
+				end : 1230,
+			}
+		},
+
+		fri : {
+			firs : {
+				start : 0930,
+				end : 1020,
+			},
+			sec : {
+				start : 1040,
+				end : 1130,
+			},
+			third : {
+				start : 1140,
+				end : 1230,
+			},
+			four : {
+				start : 1300,
+				end : 1350,	
+			},
+		}
+	}
+
+	function time(){
+		setInterval(function(){
+			let fullTime;
+			var date = new Date();
+			var h = date.getHours();
+			var m = date.getMinutes();
+			var s = date.getSeconds();
+			h = chkTime(h);
+			m = chkTime(m);
+			s = chkTime(s);
+
+			function chkTime(i)
+			{
+				if (i<10)
+				{
+					i="0" + i;
+				}
+				return i;
+			}
+
+			(function(){
+				fullTime = h + "" + m;
+				return fullTime;
+			})();
+
+
+			//unSubject объект   numDay номер объекта fir
+			if(fullTime > unSubject[numDay]["firs"]["start"]){
+				for(key in unSubject[numDay]){
+					let x = document.getElementById(numDay + " " + key);
+					if((fullTime > (unSubject[numDay][key]["start"])) && (fullTime < (unSubject[numDay][key]["end"]))){
+						x.style = "background-color : #90EE90";
+					} else {
+						x.style = "background-color : white";
+					}
+				}
+			}
+
+
+			var t = document.getElementById("showTime").innerHTML = (h + ":" + m + ":" + s);
+		},1000);
+	}
+</script>
+</head>
+<body onload="time()">
+	
+	<p  id="showTime"></p>
+	<table>
+		<tr id="cap">
+			<td>Дисциплина</td>
+			<td>Вид занятия</td>
+			<td>Преподаватель</td>
+			<td>Дни недели</td>
+			<td>Часы</td>
+			<td>Аудитория</td>
+			<td>Период обучения</td>
+		</tr>
+		<tr>
+			<td colspan="8" align="center"><b>Понедельник</b></td>
+		</tr>
+		<tr id="mon firs">
+			<td>Операционные системы</td>
+			<td>лек</td>
+			<td>Бимолдина С.Ж.</td>
+			<td>пн</td>
+			<td>08.30-09.20</td>
+			<td>610</td>
+			<td>03.09.18-15.12.1</td>
+		</tr>
+		<tr id="mon sec">
+			<td>Операционные системы</td>
+			<td>лек</td>
+			<td>Бимолдина С.Ж.</td>
+			<td>пн</td>
+			<td>09.30-10.20</td>
+			<td>610</td>
+			<td>03.09.18-15.12.1</td>
+		</tr>
+		<tr id="mon third">
+			<td>Основы информационных систем</td>
+			<td>лек</td>
+			<td>Бимолдина С.Ж.</td>
+			<td>пн</td>
+			<td>10.40-11.30</td>
+			<td>610</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr id="mon four">
+			<td>Бизнес анализ</td>
+			<td>лек</td>
+			<td>проф. Иванюк Т.Н.</td>
+			<td>пн</td>
+			<td>11.40-12.30</td>
+			<td>317</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr>
+			<td colspan="8" align="center"><b>Вторник</b></td>
+		</tr>
+		<tr id="tues firs">
+			<td>Кросплатформенные технологии для разработки мобильных приложений </td>
+			<td>лек</td>
+			<td>Спашев С.Б.</td>
+			<td>вт</td>
+			<td>09.30-10.20</td>
+			<td>608</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr id="tues sec">
+			<td>Кросплатформенные технологии для разработки мобильных приложений </td>
+			<td>лек</td>
+			<td>Спашев С.Б.</td>
+			<td>вт</td>
+			<td>10.40-11.30</td>
+			<td>608</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr id="tues third">
+			<td>Кросплатформенные технологии для разработки мобильных приложений </td>
+			<td>сем</td>
+			<td>Спашев С.Б.</td>
+			<td>вт</td>
+			<td>11.40-12.30</td>
+			<td>608</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr id="tues four">
+			<td>IT-инфраструктура </td>
+			<td>сем</td>
+			<td>Бимолдина С.Ж.</td>
+			<td>вт</td>
+			<td>13.00-13.50</td>
+			<td>310</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr  id="tues fiv">
+			<td>IT-инфраструктура </td>
+			<td>сем</td>
+			<td>Бимолдина С.Ж.</td>
+			<td>вт</td>
+			<td>14.00-14.50</td>
+			<td>310</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr>
+			<td colspan="8" align="center"><b>Среда</b></td>
+		</tr>
+		<tr id="wedn firs">
+			<td>Операционные системы</td>
+			<td>сем</td>
+			<td>Бимолдина С.Ж.</td>
+			<td>ср</td>
+			<td>10.40-11.30</td>
+			<td>506</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr  id="wedn sec">
+			<td>IT-инфраструктура </td>
+			<td>лек</td>
+			<td>Бимолдина С.Ж.</td>
+			<td>ср</td>
+			<td>11.40-12.30</td>
+			<td>610</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr id="wedn third">
+			<td>IT-инфраструктура </td>
+			<td>лек</td>
+			<td>Бимолдина С.Ж.</td>
+			<td>ср</td>
+			<td>13.00-13.50</td>
+			<td>610</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr>
+			<td colspan="8" align="center"><b>Четверг</b></td>
+		</tr>
+		<tr id="thur firs">
+			<td>Разработка высокопроизводительных приложений для Android устройств</td>
+			<td>лек</td>
+			<td>Спашев С.Б.</td>
+			<td>чт</td>
+			<td>09.30-10.20</td>
+			<td>606</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr id="thur sec">
+			<td>Разработка высокопроизводительных приложений для Android устройств</td>
+			<td>сем</td>
+			<td>Спашев С.Б.</td>
+			<td>чт</td>
+			<td>10.40-11.30</td>
+			<td>606</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr id="thur third">
+			<td>Бизнес анализ</td>
+			<td>сем</td>
+			<td>проф. Иванюк Т.Н.</td>
+			<td>чт</td>
+			<td>11.40-12.30</td>
+			<td>206</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr>
+			<td colspan="7" align="center"><b>Пятница</b></td>
+		</tr>
+		<tr id="fri firs">
+			<td>Основы информационных систем</td>
+			<td>сем</td>
+			<td>Бимолдина С.Ж.</td>
+			<td>пт</td>
+			<td>09.30-10.20</td>
+			<td>316</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr id="fri sec">
+			<td>Маркетинговый анализ</td>
+			<td>лек</td>
+			<td>доц. Разакова Д.И.</td>
+			<td>пт</td>
+			<td>10.40-11.30</td>
+			<td>308</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr id="fri third">
+			<td>Маркетинговый анализ</td>
+			<td>лек</td>
+			<td>доц. Разакова Д.И.</td>
+			<td>пт</td>
+			<td>11.40-12.30</td>
+			<td>308</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr id="fri four">
+			<td>Маркетинговый анализ</td>
+			<td>сем</td>
+			<td>доц. Разакова Д.И.</td>
+			<td>пт</td>
+			<td>13.00-13.50</td>
+			<td>621</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+	</table>
+</body>
+</html>
