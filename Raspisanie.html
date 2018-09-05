@@ -21,9 +21,29 @@
 	}
 </style>
 <script>
+	var date = new Date();
+	var numDay = date.getDay();
+
+	switch(numDay){
+		case 1 :
+		numDay = "mon";
+		break;
+		case 2 : 
+		numDay = "tues";
+		break;
+		case 3 : 
+		numDay = "wedn";
+		break;
+		case 4 : 
+		numDay = "thur";
+		break;
+		case 5 : 
+		numDay = "fri";
+		break;
+	}
+
 	var unSubject = {
 		mon : {
-			day : 1,
 			firs : {
 				start : 0830,
 				end : 0920,
@@ -43,7 +63,6 @@
 		},
 
 		tues : {
-			day : 2,
 			firs : {
 				start : 0930,
 				end : 1020,
@@ -67,10 +86,9 @@
 		},
 
 		wedn : {
-			day : 3,
 			firs : {
 				start : 1040,
-				end : 1130,
+				end : 91130,
 			},
 			sec : {
 				start : 1140,
@@ -83,7 +101,6 @@
 		},
 
 		thur : {
-			day : 4,
 			firs : {
 				start : 0930,
 				end : 1020,
@@ -99,7 +116,6 @@
 		},
 
 		fri : {
-			day : 5,
 			firs : {
 				start : 0930,
 				end : 1020,
@@ -121,6 +137,7 @@
 
 	function time(){
 		setInterval(function(){
+			let fullTime;
 			var date = new Date();
 			var h = date.getHours();
 			var m = date.getMinutes();
@@ -137,6 +154,23 @@
 				}
 				return i;
 			}
+
+			(function(){
+				fullTime = h + "" + m;
+				return fullTime;
+			})();
+
+
+			//unSubject объект   numDay номер объекта fir
+			if(fullTime > unSubject[numDay]["firs"]["start"]){
+				for(key in unSubject[numDay]){
+					if((fullTime > (unSubject[numDay][key]["start"])) && (fullTime < (unSubject[numDay][key]["end"]))){
+						let x = document.getElementById(numDay + " " + key);
+						x.style = "background-color : #90EE90";
+					}
+				}
+			}
+
 
 			var t = document.getElementById("showTime").innerHTML = (h + ":" + m + ":" + s);
 		},1000);
@@ -159,7 +193,7 @@
 		<tr>
 			<td colspan="8" align="center"><b>Понедельник</b></td>
 		</tr>
-		<tr>
+		<tr id="mon firs">
 			<td>Операционные системы</td>
 			<td>лек</td>
 			<td>Бимолдина С.Ж.</td>
@@ -168,7 +202,7 @@
 			<td>610</td>
 			<td>03.09.18-15.12.1</td>
 		</tr>
-		<tr>
+		<tr id="mon sec">
 			<td>Операционные системы</td>
 			<td>лек</td>
 			<td>Бимолдина С.Ж.</td>
@@ -177,7 +211,7 @@
 			<td>610</td>
 			<td>03.09.18-15.12.1</td>
 		</tr>
-		<tr>
+		<tr id="mon third">
 			<td>Основы информационных систем</td>
 			<td>лек</td>
 			<td>Бимолдина С.Ж.</td>
@@ -186,7 +220,7 @@
 			<td>610</td>
 			<td>03.09.18-15.12.18</td>
 		</tr>
-		<tr>
+		<tr id="mon four">
 			<td>Бизнес анализ</td>
 			<td>лек</td>
 			<td>проф. Иванюк Т.Н.</td>
@@ -198,7 +232,7 @@
 		<tr>
 			<td colspan="8" align="center"><b>Вторник</b></td>
 		</tr>
-		<tr>
+		<tr id="tues firs">
 			<td>Кросплатформенные технологии для разработки мобильных приложений </td>
 			<td>лек</td>
 			<td>Спашев С.Б.</td>
@@ -207,7 +241,7 @@
 			<td>608</td>
 			<td>03.09.18-15.12.18</td>
 		</tr>
-		<tr>
+		<tr id="tues sec">
 			<td>Кросплатформенные технологии для разработки мобильных приложений </td>
 			<td>лек</td>
 			<td>Спашев С.Б.</td>
@@ -216,7 +250,7 @@
 			<td>608</td>
 			<td>03.09.18-15.12.18</td>
 		</tr>
-		<tr>
+		<tr id="tues third">
 			<td>Кросплатформенные технологии для разработки мобильных приложений </td>
 			<td>сем</td>
 			<td>Спашев С.Б.</td>
@@ -225,7 +259,7 @@
 			<td>608</td>
 			<td>03.09.18-15.12.18</td>
 		</tr>
-		<tr>
+		<tr id="tues four">
 			<td>IT-инфраструктура </td>
 			<td>сем</td>
 			<td>Бимолдина С.Ж.</td>
@@ -234,7 +268,7 @@
 			<td>310</td>
 			<td>03.09.18-15.12.18</td>
 		</tr>
-		<tr>
+		<tr  id="tues fiv">
 			<td>IT-инфраструктура </td>
 			<td>сем</td>
 			<td>Бимолдина С.Ж.</td>
@@ -246,7 +280,7 @@
 		<tr>
 			<td colspan="8" align="center"><b>Среда</b></td>
 		</tr>
-		<tr>
+		<tr id="wedn firs">
 			<td>Операционные системы</td>
 			<td>сем</td>
 			<td>Бимолдина С.Ж.</td>
@@ -255,7 +289,7 @@
 			<td>506</td>
 			<td>03.09.18-15.12.18</td>
 		</tr>
-		<tr>
+		<tr  id="wedn sec">
 			<td>IT-инфраструктура </td>
 			<td>лек</td>
 			<td>Бимолдина С.Ж.</td>
@@ -264,7 +298,7 @@
 			<td>610</td>
 			<td>03.09.18-15.12.18</td>
 		</tr>
-		<tr>
+		<tr id="wedn third">
 			<td>IT-инфраструктура </td>
 			<td>лек</td>
 			<td>Бимолдина С.Ж.</td>
@@ -276,7 +310,7 @@
 		<tr>
 			<td colspan="8" align="center"><b>Четверг</b></td>
 		</tr>
-		<tr>
+		<tr id="thur firs">
 			<td>Разработка высокопроизводительных приложений для Android устройств</td>
 			<td>лек</td>
 			<td>Спашев С.Б.</td>
@@ -285,7 +319,7 @@
 			<td>606</td>
 			<td>03.09.18-15.12.18</td>
 		</tr>
-		<tr>
+		<tr id="thur sec">
 			<td>Разработка высокопроизводительных приложений для Android устройств</td>
 			<td>сем</td>
 			<td>Спашев С.Б.</td>
@@ -294,7 +328,7 @@
 			<td>606</td>
 			<td>03.09.18-15.12.18</td>
 		</tr>
-		<tr>
+		<tr id="thur third">
 			<td>Бизнес анализ</td>
 			<td>сем</td>
 			<td>проф. Иванюк Т.Н.</td>
@@ -306,7 +340,7 @@
 		<tr>
 			<td colspan="7" align="center"><b>Пятница</b></td>
 		</tr>
-		<tr>
+		<tr id="fri firs">
 			<td>Основы информационных систем</td>
 			<td>сем</td>
 			<td>Бимолдина С.Ж.</td>
@@ -315,7 +349,7 @@
 			<td>316</td>
 			<td>03.09.18-15.12.18</td>
 		</tr>
-		<tr>
+		<tr id="fri sec">
 			<td>Маркетинговый анализ</td>
 			<td>лек</td>
 			<td>доц. Разакова Д.И.</td>
@@ -324,7 +358,7 @@
 			<td>308</td>
 			<td>03.09.18-15.12.18</td>
 		</tr>
-		<tr>
+		<tr id="fri third">
 			<td>Маркетинговый анализ</td>
 			<td>лек</td>
 			<td>доц. Разакова Д.И.</td>
@@ -333,7 +367,7 @@
 			<td>308</td>
 			<td>03.09.18-15.12.18</td>
 		</tr>
-		<tr>
+		<tr id="fri four">
 			<td>Маркетинговый анализ</td>
 			<td>сем</td>
 			<td>доц. Разакова Д.И.</td>
