@@ -4,24 +4,148 @@
 	<meta charset="UTF-8">
 	<title>Рассписание</title>
 	<style>
-		table{
-			border-collapse : collapse;
-		}
+	table{
+		border-collapse : collapse;
+	}
 
-		td{
-			border : 1px solid grey;
-			padding : 3px 10px;
-		}
+	td{
+		border : 1px solid grey;
+		padding : 3px 10px;
+	}
 
-		#cap{
-			background-color : black;
-			color : white;
-			font-weight: bold;
-			text-align : center;
+	#cap{
+		background-color : black;
+		color : white;
+		font-weight: bold;
+		text-align : center;
+	}
+</style>
+<script>
+	var unSubject = {
+		mon : {
+			day : 1,
+			firs : {
+				start : 0830,
+				end : 0920,
+			},
+			sec : {
+				start : 0930,
+				end : 1020,
+			},
+			third : {
+				start : 1040,
+				end : 1130,
+			},
+			four : {
+				start : 1140,
+				end : 1230,
+			}
+		},
+
+		tues : {
+			day : 2,
+			firs : {
+				start : 0930,
+				end : 1020,
+			},
+			sec : {
+				start : 1040,
+				end : 1130,
+			},
+			third : {
+				start : 1140,
+				end : 1230,
+			},
+			four : {
+				start : 1300,
+				end : 1350,	
+			},
+			fiv : {
+				start : 1400,
+				end : 1450,
+			}
+		},
+
+		wedn : {
+			day : 3,
+			firs : {
+				start : 1040,
+				end : 1130,
+			},
+			sec : {
+				start : 1140,
+				end : 1230,
+			},
+			third : {
+				start : 1300,
+				end : 1350,
+			},
+		},
+
+		thur : {
+			day : 4,
+			firs : {
+				start : 0930,
+				end : 1020,
+			},
+			sec : {
+				start : 1040,
+				end : 1130,
+			},
+			third : {
+				start : 1140,
+				end : 1230,
+			}
+		},
+
+		fri : {
+			day : 5,
+			firs : {
+				start : 0930,
+				end : 1020,
+			},
+			sec : {
+				start : 1040,
+				end : 1130,
+			},
+			third : {
+				start : 1140,
+				end : 1230,
+			},
+			four : {
+				start : 1300,
+				end : 1350,	
+			},
 		}
-	</style>
+	}
+
+	function time(){
+		setInterval(function(){
+			var date = new Date();
+			var h = date.getHours();
+			var m = date.getMinutes();
+			var s = date.getSeconds();
+			h = chkTime(h);
+			m = chkTime(m);
+			s = chkTime(s);
+
+			function chkTime(i)
+			{
+				if (i<10)
+				{
+					i="0" + i;
+				}
+				return i;
+			}
+
+			var t = document.getElementById("showTime").innerHTML = (h + ":" + m + ":" + s);
+		},1000);
+	}
+</script>
 </head>
-<body>
+<body onload="time()">
+	
+	<p  id="showTime"></p>
 	<table>
 		<tr id="cap">
 			<td>Дисциплина</td>
@@ -33,11 +157,23 @@
 			<td>Период обучения</td>
 		</tr>
 		<tr>
+			<td colspan="8" align="center"><b>Понедельник</b></td>
+		</tr>
+		<tr>
 			<td>Операционные системы</td>
 			<td>лек</td>
 			<td>Бимолдина С.Ж.</td>
 			<td>пн</td>
-			<td>08.30-10.20</td>
+			<td>08.30-09.20</td>
+			<td>610</td>
+			<td>03.09.18-15.12.1</td>
+		</tr>
+		<tr>
+			<td>Операционные системы</td>
+			<td>лек</td>
+			<td>Бимолдина С.Ж.</td>
+			<td>пн</td>
+			<td>09.30-10.20</td>
 			<td>610</td>
 			<td>03.09.18-15.12.1</td>
 		</tr>
@@ -60,11 +196,23 @@
 			<td>03.09.18-15.12.18</td>
 		</tr>
 		<tr>
+			<td colspan="8" align="center"><b>Вторник</b></td>
+		</tr>
+		<tr>
 			<td>Кросплатформенные технологии для разработки мобильных приложений </td>
 			<td>лек</td>
 			<td>Спашев С.Б.</td>
 			<td>вт</td>
-			<td>09.30-11.30</td>
+			<td>09.30-10.20</td>
+			<td>608</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr>
+			<td>Кросплатформенные технологии для разработки мобильных приложений </td>
+			<td>лек</td>
+			<td>Спашев С.Б.</td>
+			<td>вт</td>
+			<td>10.40-11.30</td>
 			<td>608</td>
 			<td>03.09.18-15.12.18</td>
 		</tr>
@@ -82,9 +230,21 @@
 			<td>сем</td>
 			<td>Бимолдина С.Ж.</td>
 			<td>вт</td>
-			<td>13.00-14.50</td>
+			<td>13.00-13.50</td>
 			<td>310</td>
 			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr>
+			<td>IT-инфраструктура </td>
+			<td>сем</td>
+			<td>Бимолдина С.Ж.</td>
+			<td>вт</td>
+			<td>14.00-14.50</td>
+			<td>310</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr>
+			<td colspan="8" align="center"><b>Среда</b></td>
 		</tr>
 		<tr>
 			<td>Операционные системы</td>
@@ -100,9 +260,21 @@
 			<td>лек</td>
 			<td>Бимолдина С.Ж.</td>
 			<td>ср</td>
-			<td>11.40-13.50</td>
+			<td>11.40-12.30</td>
 			<td>610</td>
 			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr>
+			<td>IT-инфраструктура </td>
+			<td>лек</td>
+			<td>Бимолдина С.Ж.</td>
+			<td>ср</td>
+			<td>13.00-13.50</td>
+			<td>610</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr>
+			<td colspan="8" align="center"><b>Четверг</b></td>
 		</tr>
 		<tr>
 			<td>Разработка высокопроизводительных приложений для Android устройств</td>
@@ -132,6 +304,9 @@
 			<td>03.09.18-15.12.18</td>
 		</tr>
 		<tr>
+			<td colspan="7" align="center"><b>Пятница</b></td>
+		</tr>
+		<tr>
 			<td>Основы информационных систем</td>
 			<td>сем</td>
 			<td>Бимолдина С.Ж.</td>
@@ -145,7 +320,16 @@
 			<td>лек</td>
 			<td>доц. Разакова Д.И.</td>
 			<td>пт</td>
-			<td>10.40-12.30</td>
+			<td>10.40-11.30</td>
+			<td>308</td>
+			<td>03.09.18-15.12.18</td>
+		</tr>
+		<tr>
+			<td>Маркетинговый анализ</td>
+			<td>лек</td>
+			<td>доц. Разакова Д.И.</td>
+			<td>пт</td>
+			<td>11.40-12.30</td>
 			<td>308</td>
 			<td>03.09.18-15.12.18</td>
 		</tr>
@@ -159,21 +343,5 @@
 			<td>03.09.18-15.12.18</td>
 		</tr>
 	</table>
-	<script>
-		var c = document.querySelectorAll('tr');
-		for(var i = 1; i < c.length; i++){
-			c[i].querySelectorAll('td')[1].style = "text-align : center";
-		}
-		
-		var c = document.querySelectorAll('tr');
-		for(var i = 1; i < c.length; i++){
-			c[i].querySelectorAll('td')[3].style = "text-align : center";
-		}
-		
-		var c = document.querySelectorAll('tr');
-		for(var i = 1; i < c.length; i++){
-			c[i].querySelectorAll('td')[5].style = "text-align : center";
-		}
-	</script>
 </body>
 </html>
