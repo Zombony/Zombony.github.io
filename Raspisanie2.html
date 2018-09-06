@@ -162,10 +162,10 @@
 
 
 			//unSubject объект   numDay номер объекта fir
-			if(fullTime > unSubject[numDay]["firs"]["start"]){
+			if(fullTime >= unSubject[numDay]["firs"]["start"]){
 				for(key in unSubject[numDay]){
 					let x = document.getElementById(numDay + " " + key);
-					if((fullTime > (unSubject[numDay][key]["start"])) && (fullTime < (unSubject[numDay][key]["end"]))){
+					if((fullTime >= (unSubject[numDay][key]["start"])) && (fullTime <= (unSubject[numDay][key]["end"]))){
 						x.style = "background-color : #90EE90";
 					} else {
 						x.style = "background-color : white";
