@@ -1,0 +1,126 @@
+body{
+	margin : 0px;
+}
+
+p{
+	margin : 0;
+}
+
+header table, header div{
+	display: flex;
+	align-items: center;
+}
+
+header table{
+	width: 510px;
+	padding-left : 80px;
+	padding-right : 80px;
+	font-size: 13px;
+	color : #2c465a;
+	height: 100%;	
+}
+
+header td{
+	padding-right : 20px;
+}
+
+.book{
+	height : 47px;
+	width : 200px;
+	background-color : #fea100;
+	color : white;
+}
+
+header{
+	display : flex;
+	height : 90px;
+}
+
+.logo{
+	width : 215px;
+	float : left;
+	padding-left : 200px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+#about_restaurent{
+	height : 840px;
+}
+
+#Today_special{
+	height : 1015px;
+}
+
+footer{
+	height: 305px;
+	background-color : #373844;
+}
+
+#icons{
+	padding-top : 80px;
+}
+
+#copyr{
+	padding-top : 30px;
+	font-family : Noto Sans, sans-serif;
+}
+
+#copyr hr{
+	height: 1px;
+	border : none;
+	background-color : #8e9198;
+	width : 370px;
+}
+
+#copyr hr, #copyr p{
+
+	display:inline-block;
+}
+
+#copyr p{
+	color: #8e9198;
+	padding-right : 100px;
+	padding-left : 100px;	
+}
+
+
+
+/*///////////////////////////////////////////////////////////////////////////////////*/
+
+.banner{
+	background-image : url("img/banner.png");
+	height : 570px;
+
+}
+
+.banner p{
+	color : white;
+	font-size : 55px;
+	height : 100%;
+	padding-left : 200px;
+}
+
+
+.below_banner{
+	height : 100px;
+	background-color : #edf1f3;
+	display: flex;
+	align-items: center;
+	text-align : center;
+}
+
+.number{
+	width : 100%;
+	font-size : 32px;
+	    font-family: sans-serif;
+}
+
+.org{
+	color : #fea100;
+}
+
+.ban{
+	padding-top : 15%;
+}
